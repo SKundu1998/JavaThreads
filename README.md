@@ -1,5 +1,5 @@
 #multithreading
 
-Explored the use of multiple threads, the problems of using shared instances and one solution in ThreadLocal variables.
+Tried out synchronized blocks. Experimented with join();.
 
-Version: 1.0
+Version: 2.0
