@@ -22,48 +22,47 @@ class StillNotThreadSafe{
 }
 
 
-class MyRunnable implements Runnable{
+class MyThread extends Thread{
 	  
 	NotThreadSafe instance = null;
 	
-	public MyRunnable(NotThreadSafe instance){
-		System.out.println("Thread " + Thread.currentThread().getName() + " constructed");
+	public MyThread(NotThreadSafe instance){
+		System.out.println("Thread " + this.getName() + " constructed");
 		this.instance = instance;
-		System.out.println(Thread.currentThread().getName() + " has received instance.");
+		System.out.println(this.getName() + " has received instance.");
 	}
 
 	public void run(){
 		this.instance.add("some text");
 	    System.out.println(instance.builder);
-	    System.out.println("Thread "+ Thread.currentThread().getName() +" concludes here.");
+	    System.out.println("Thread "+ this.getName() +" concludes here.");
 	}
 }
 
-class MyRunnable1 implements Runnable{
+class MyThread1 extends Thread{
 	  
 	StillNotThreadSafe instance1 = null;
 	
-	public MyRunnable1(StillNotThreadSafe instance1){
-		System.out.println("Thread " + Thread.currentThread().getName() + " constructed");
+	public MyThread1(StillNotThreadSafe instance1){
+		System.out.println("Thread " + this.getName() + " constructed");
 		this.instance1 = instance1;
-		System.out.println(Thread.currentThread().getName() + " has received instance.");
+		System.out.println(this.getName() + " has received instance.");
 	}
 
 	public void run(){
 		this.instance1.add("some text");
-	    System.out.println("Thread "+ Thread.currentThread().getName() +" concludes here.");
+	    System.out.println("Thread "+ this.getName() +" concludes here.");
 	}
 }
 
 public class Threading3 {
 
 	public static void main (String[] args) {
+		
 		NotThreadSafe sharedInstance = new NotThreadSafe();
 
-		MyRunnable r1 = new MyRunnable(sharedInstance);
-		MyRunnable r2 = new MyRunnable(sharedInstance);
-		Thread threadA = new Thread(r1);
-		Thread threadB = new Thread(r2);
+		Thread threadA = new MyThread(sharedInstance);
+		Thread threadB = new MyThread(sharedInstance);
 		threadA.start();
 		threadB.start();
 		//new Thread(new MyRunnable(sharedInstance)).start();
@@ -71,8 +70,8 @@ public class Threading3 {
 		
 		StillNotThreadSafe sharedInstance1 = new StillNotThreadSafe();
 		
-		Thread threadC = new Thread(new MyRunnable1(sharedInstance1));
-		Thread threadD = new Thread(new MyRunnable1(sharedInstance1));
+		Thread threadC = new MyThread1(sharedInstance1);
+		Thread threadD = new MyThread1(sharedInstance1);
 		threadC.start();
 		threadD.start();
 		//new Thread(new MyRunnable1(sharedinstance1)).start();
@@ -82,18 +81,20 @@ public class Threading3 {
 		System.out.println("\n\n");
 		//Safe version which creates separate instances follows:
 		
-		Thread threadE = new Thread(new MyRunnable(new NotThreadSafe()));
+		Thread threadE = new MyThread(new NotThreadSafe());
 		threadE.start();
-		Thread threadF = new Thread(new MyRunnable(new NotThreadSafe()));
+		Thread threadF = new MyThread(new NotThreadSafe());
 		threadF.start();
 		//new Thread(new MyRunnable(new NotThreadSafe())).start();
 		//new Thread(new MyRunnable(new NotThreadSafe())).start();
 		
-		Thread threadG = new Thread(new MyRunnable1(new StillNotThreadSafe()));
+		Thread threadG = new MyThread1(new StillNotThreadSafe());
 		threadG.start();
-		Thread threadH = new Thread(new MyRunnable1(new StillNotThreadSafe()));
+		Thread threadH = new MyThread1(new StillNotThreadSafe());
 		threadH.start();
 		//new Thread(new MyRunnable1(new StillNotThreadSafe())).start();
 		//new Thread(new MyRunnable1(new StillNotThreadSafe())).start();
+		
+		//Changing from Runnable to Thread extension allows for getting the name of the thread.
 	}
 }
