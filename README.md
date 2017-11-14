@@ -1,5 +1,5 @@
 #multithreading
 
-Learnt how to use daemon threads.
+Learnt how to use the thread pool.
 
-Version: 3.0
+Version: 4.0
