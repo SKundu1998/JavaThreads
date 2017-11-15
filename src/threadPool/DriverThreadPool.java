@@ -18,7 +18,7 @@ public class DriverThreadPool {
 			try {
 				System.out.println("Threads are running. Putting " + Thread.currentThread().getName() + " to sleep for 1.5s.");
 				Thread.sleep(1500);
-				// This puts the main execution thread to sleep, not the thread pool.
+				// This puts the main execution thread to sleep, not the thread pool's threads.
 			}
 			catch(InterruptedException e) {
 				e.printStackTrace();
