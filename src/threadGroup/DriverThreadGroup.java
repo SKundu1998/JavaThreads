@@ -15,6 +15,7 @@ public class DriverThreadGroup {
 		t2.start();
 		Thread t3 = new Thread(tg1, runnable, "three");
 		t3.start();
+		//these may not start in order.
 		
 		System.out.println("ThreadGroupName: " + tg1.getName());
 		
