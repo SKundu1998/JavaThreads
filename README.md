@@ -1,5 +1,5 @@
 #multithreading
 
-Learnt how to use the thread pool.
+Learnt how to use the ThreadGroups.
 
-Version: 4.0
+Version: 5.0
