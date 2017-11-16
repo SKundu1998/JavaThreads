@@ -1,5 +1,5 @@
 #multithreading
 
-Made minor changes to the file to make sure that all thread data is found by list().
+Tried out the ShutdownHook, with both a separate class and an anonymous inline definition.
 
-Version: 5.1
+Version: 6.0
