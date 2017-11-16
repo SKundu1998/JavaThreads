@@ -1,5 +1,5 @@
 #multithreading
 
-Tried out the ShutdownHook, with both a separate class and an anonymous inline definition.
+Learnt about the garbage collector. Learnt to use finalize() and gc().
 
-Version: 6.0
+Version: 7.0
