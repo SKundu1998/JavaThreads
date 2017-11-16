@@ -1,5 +1,5 @@
 #multithreading
 
-Learnt about the garbage collector. Learnt to use finalize() and gc().
+Learnt about the Runtime class and its object. Used shutdown and opened notepad.
 
-Version: 7.0
+Version: 8.0
