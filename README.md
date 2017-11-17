@@ -1,5 +1,5 @@
 #multithreading
 
-Learnt about the Runtime class and its object. Used shutdown and opened notepad.
+Learnt more about the usage of the runtime class. Learnt about available processes and memory.
 
-Version: 8.0
+Version: 8.1

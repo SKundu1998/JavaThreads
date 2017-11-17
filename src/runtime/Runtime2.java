@@ -50,6 +50,7 @@ public class Runtime2 {
 				System.out.println("Wrong input.");
 			}
 		}
+		in.close();
 	}
 
 }
